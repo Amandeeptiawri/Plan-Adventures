@@ -1,10 +1,10 @@
 import React from 'react'
 import Card from './Card.jsx';
 
-const Tours = (props) => {
+const Tours = ({tours,removeTour}) => {
     function getId(id)
     {
-        props.removeTour(id);
+        removeTour(id);
     }
 
     return (
@@ -15,8 +15,8 @@ const Tours = (props) => {
 
             <div className="cardsContainer">
                 {
-                    props.tours.map((tour) => {
-                        return <Card tour={tour} getRemoveId = {getId}/>
+                    tours.map((tour) => {
+                        return <Card {...tour} getRemoveId = {getId}/>
                     })
                 }
             </div>

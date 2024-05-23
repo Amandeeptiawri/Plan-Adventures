@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import data from "./data";
 import Tours from './Components/Tours';
-import Refresh from './Components/Refresh';
+
 
 const App = () => {
   const [tour, setTour] = useState(data);
@@ -14,7 +14,14 @@ const App = () => {
 
 
   if (tour.length === 0) {
-    return <Refresh setTour={setTour} data={data}/>
+    return (
+      <div className="refresh">
+          <h2>no tour left</h2>
+          <button className="refreshBtn" onClick={() => setTour(data)}>
+              Refresh
+          </button>
+      </div>
+    )
   }
 
   return (
