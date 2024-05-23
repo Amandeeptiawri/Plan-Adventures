@@ -1,33 +1,25 @@
-import Tours from './components/Tours';
-import React from 'react'
-import './App.css';
-import { useState } from 'react';
-import data from './data'
+import React, { useState } from "react";
+import data from "./data";
+import Tours from './Components/Tours';
+import Refresh from './Components/Refresh';
 
-function App() {
-      const [tours,setTours]=useState(data);
-      function removeTour(id){
-        const newTours=tours.filter(tour=>tour.id!==id);
-        setTours(newTours);
-      }
-      if(tours.length===0){
-        return(
-          <div className='refresh'>
-          <h2>No tours left</h2>
-          <button onClick={()=>setTours(data)}>Refresh</button>
+const App = () => {
+  const [tour, setTour] = useState(data);
 
-          </div>
-        )
-      }
+  function removeTour(id) {
+    const newTour = tour.filter(tour => tour.id !== id)
+    console.log(id);
+    setTour(newTour);
+  }
 
+
+  if (tour.length === 0) {
+    return <Refresh setTour={setTour} data={data}/>
+  }
 
   return (
-    <div >
-
-    <Tours tour={tours} removeTour={removeTour}></Tours>
-
-    </div>
-  );
-}
+    <Tours tours={tour} removeTour={removeTour} />
+  )
+};
 
 export default App;
